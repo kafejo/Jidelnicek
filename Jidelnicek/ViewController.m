@@ -20,7 +20,7 @@ Reachability *internetReachableFoo;
 -(void) viewDidAppear:(BOOL)animated {
     // aktualizuji si data po prechodu - jako kdybych stisknoul tlacitko na aktualizaci
      //[self reload];
-     [self performSelectorInBackground:@selector(createMoneyLabel) withObject:nil];
+     [self performSelectorInBackground:@selector(setMoneyToBar) withObject:nil];
     
 }
 - (void) viewWillAppear:(BOOL)animated {
@@ -73,7 +73,6 @@ Reachability *internetReachableFoo;
     [_manager setActualDay];
     // nastavim money label
    
-    //[self createMoneyLabel];
     
     // debug vypis
    //[_manager printActualDay];
@@ -89,15 +88,10 @@ Reachability *internetReachableFoo;
 }
 
 -(IBAction)showInfo:(id)sender{
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"About" message:@"Application made by KeepUp\n\nAleš Kocur\nMikuláš Muroň\n\n Version 0.8" delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil];
+    NSString *info = [NSString stringWithFormat:@"Application made by KeepUp\n\nAleš Kocur\nMikuláš Muroň\n\n Version: %@\n\nwww.keepup.cz", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"About" message:info delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil];
     
-    UITextView *someTextView = [[UITextView alloc] initWithFrame:CGRectMake(40, 10, 350, 500)];
-    someTextView.backgroundColor = [UIColor blueColor];
-    someTextView.textColor = [UIColor blackColor];
-    someTextView.editable = NO;
-    someTextView.font = [UIFont systemFontOfSize:15];
-    someTextView.text = @"Application made by KeepUp\n\nAleš Kocur\nMikuláš Muroň";
-    [alert addSubview:someTextView];
     [alert show];
 }
 
@@ -115,10 +109,6 @@ Reachability *internetReachableFoo;
     //UIActivityIndicatorView *indicator =
     internetReachableFoo = [Reachability reachabilityWithHostname:@"www.google.com"];
     
-    /* The capture of self here is coming in with your implicit property access 
-     * of self.timerDisp you can't refer to self or properties on self from within a block that
-     * will be strongly retained by self.
-     */
     __weak typeof(self) weakSelf = self;
     
     // Internet is reachable
@@ -138,17 +128,13 @@ Reachability *internetReachableFoo;
         
     };
     
-    
     [internetReachableFoo startNotifier];
     
     
 }
 
-
-// akce pri stisknuti tlacitka
-
 // Prihlaseni do IS a parsovani
--(void) createMoneyLabelInternetOk {
+-(void) getMoneyFromAccount {
     
     NSMutableURLRequest * urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://is.mendelu.cz/auth/uskm/jidelnicek.pl"]];
     NSURLResponse * response = nil;
@@ -168,7 +154,6 @@ Reachability *internetReachableFoo;
     
     // Odkomentuj pokud chces zobrazit data co ti prisla
     // NSLog(@"%@",[[NSString alloc] initWithData:data encoding:NSASCIIStringEncoding]);
-
     
     if (error == nil)
     {
@@ -181,7 +166,6 @@ Reachability *internetReachableFoo;
         NSTextCheckingResult *match = [regex firstMatchInString:s_data options:0 range:NSMakeRange(0, [s_data length])];
         
         
-        
         NSString * TextLabel = [NSString stringWithFormat:@" %@ Kč", [s_data substringWithRange:[match rangeAtIndex:1]]];
         self.navigationItem.leftBarButtonItem.title = TextLabel;
         
@@ -189,8 +173,6 @@ Reachability *internetReachableFoo;
         //NSLog(@"Ukladam kredit");
         
     }
-    
-
     
 }
 
@@ -204,7 +186,7 @@ Reachability *internetReachableFoo;
 }
 
 // vytvarim a obnovuji tlacitko s loginem ci kreditem
--(void) createMoneyLabel {
+-(void) setMoneyToBar {
     
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"username"] != nil &&
         [[NSUserDefaults standardUserDefaults] objectForKey:@"password"] != nil &&
@@ -221,7 +203,7 @@ Reachability *internetReachableFoo;
     {
         // Update the UI on the main thread
         dispatch_async(dispatch_get_main_queue(), ^{
-            [weakSelf performSelectorInBackground:@selector(createMoneyLabelInternetOk) withObject:nil];
+            [weakSelf performSelectorInBackground:@selector(getMoneyFromAccount) withObject:nil];
             //[weakSelf createMoneyLabelInternetOk];
             
         });
@@ -236,7 +218,6 @@ Reachability *internetReachableFoo;
         });
     };
 
-    
     [internetReachableFoo startNotifier];
     
     }
@@ -259,7 +240,6 @@ Reachability *internetReachableFoo;
     
 }
 
-	
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"rate"]){

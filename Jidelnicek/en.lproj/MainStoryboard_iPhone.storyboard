@@ -27,11 +27,11 @@
             <objects>
                 <viewController id="nZl-Eg-Qo6" customClass="ViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ieH-gf-dL1">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="479.99999999999994"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="KO5-pn-gbQ">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="479.99999999999994"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -69,7 +69,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" id="Jya-7L-CU5" customClass="CCPicker">
-                                <rect key="frame" x="0.0" y="403" width="320" height="75.999999999999957"/>
+                                <rect key="frame" x="0.0" y="350" width="320" height="66"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.6784313917" blue="0.69019609689999994" alpha="1" colorSpace="deviceRGB"/>
                             </view>
@@ -85,6 +85,11 @@
                                 <segue destination="xK0-mf-d6R" kind="push" id="tkD-MI-kjd"/>
                             </connections>
                         </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="info-icon2.png" id="vaC-zc-1Sj">
+                            <connections>
+                                <action selector="showInfo:" destination="nZl-Eg-Qo6" id="hNE-86-90A"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="pickerView" destination="Jya-7L-CU5" id="K6A-TZ-kAp"/>
@@ -95,7 +100,7 @@
             </objects>
             <point key="canvasLocation" x="510" y="134"/>
         </scene>
-        <!--Rate View Controller-->
+        <!--Rate View Controller - Ohodnotit jídlo-->
         <scene sceneID="2c1-PW-IXU">
             <objects>
                 <viewController modalTransitionStyle="crossDissolve" id="evc-1F-2sc" customClass="RateViewController" sceneMemberID="viewController">
@@ -123,7 +128,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" id="TVO-O1-zkV"/>
+                    <navigationItem key="navigationItem" title="Ohodnotit jídlo" id="TVO-O1-zkV"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="foodLabel" destination="NZh-e8-Zbe" id="v7e-zH-h4l"/>
@@ -135,22 +140,22 @@
             </objects>
             <point key="canvasLocation" x="1054" y="129"/>
         </scene>
-        <!--Login View Controller-->
+        <!--Login View Controller - Přihlášení-->
         <scene sceneID="RQk-zz-BBF">
             <objects>
                 <viewController id="xK0-mf-d6R" customClass="LoginViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SDa-LF-bF4">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Přihlas se pro zobrazení stavu na tvém účtu" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IZ0-VU-Orx">
-                                <rect key="frame" x="10" y="9" width="300" height="52"/>
+                                <rect key="frame" x="10" y="8" width="300" height="52"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Přihlašovací jméno do IS" minimumFontSize="17" id="Vfn-99-bV1">
-                                <rect key="frame" x="53" y="79" width="215" height="30"/>
+                                <rect key="frame" x="53" y="68" width="215" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no"/>
                                 <connections>
@@ -158,7 +163,7 @@
                                 </connections>
                             </textField>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Heslo do IS" minimumFontSize="17" id="4JC-oe-zx1">
-                                <rect key="frame" x="53" y="123" width="215" height="30"/>
+                                <rect key="frame" x="53" y="106" width="215" height="30"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
                                 <connections>
@@ -166,7 +171,7 @@
                                 </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="f2n-LZ-AdG">
-                                <rect key="frame" x="53" y="186" width="215" height="44"/>
+                                <rect key="frame" x="53" y="159" width="215" height="44"/>
                                 <color key="backgroundColor" red="0.0" green="0.6784313917" blue="0.69019609689999994" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
                                 <state key="normal" title="Přihlásit">
@@ -181,7 +186,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="2Ly-CZ-J44">
-                                <rect key="frame" x="53" y="247" width="215" height="44"/>
+                                <rect key="frame" x="53" y="211" width="215" height="44"/>
                                 <color key="backgroundColor" red="0.0" green="0.6784313917" blue="0.69019609689999994" alpha="1" colorSpace="deviceRGB"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
                                 <state key="normal" title="Odhlásit">
@@ -200,7 +205,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" id="LEj-HV-TZZ"/>
+                    <navigationItem key="navigationItem" title="Přihlášení" id="LEj-HV-TZZ"/>
                     <connections>
                         <outlet property="passwordText" destination="4JC-oe-zx1" id="4dU-Wp-Mt6"/>
                         <outlet property="usernameText" destination="Vfn-99-bV1" id="DK1-Zc-WKf"/>
@@ -211,6 +216,9 @@
             <point key="canvasLocation" x="1054" y="821"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="info-icon2.png" width="22" height="22"/>
+    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

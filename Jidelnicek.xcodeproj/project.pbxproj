@@ -32,6 +32,8 @@
 		3FEC1C7316F75D37002DA1F6 /* Food.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC1C7216F75D37002DA1F6 /* Food.m */; };
 		3FEC1C7516F75E43002DA1F6 /* libxml2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 3FEC1C7416F75E43002DA1F6 /* libxml2.dylib */; };
 		3FEC1C7816F75E8A002DA1F6 /* Day.m in Sources */ = {isa = PBXBuildFile; fileRef = 3FEC1C7716F75E8A002DA1F6 /* Day.m */; };
+		9018F23317CBE147009D89EB /* info-icon2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9018F23117CBE147009D89EB /* info-icon2.png */; };
+		9018F23417CBE147009D89EB /* info-icon2@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9018F23217CBE147009D89EB /* info-icon2@2x.png */; };
 		902D0C06177ED17300B80003 /* Media.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 902D0C05177ED17300B80003 /* Media.xcassets */; };
 		909351CC173F78350064E7B1 /* hvezdy_empty@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 909351C5173F78350064E7B1 /* hvezdy_empty@2x~ipad.png */; };
 		909351CD173F78350064E7B1 /* hvezdy_empty~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 909351C6173F78350064E7B1 /* hvezdy_empty~ipad.png */; };
@@ -47,7 +49,6 @@
 		909351E0173F7E4F0064E7B1 /* hvezdy_half~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 909351DC173F7E4F0064E7B1 /* hvezdy_half~iphone.png */; };
 		9093522A174010870064E7B1 /* CCPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 90935227174010870064E7B1 /* CCPicker.m */; };
 		9093522B174010870064E7B1 /* CCScrollViewPicker.m in Sources */ = {isa = PBXBuildFile; fileRef = 90935229174010870064E7B1 /* CCScrollViewPicker.m */; };
-		90F0F8C917CBC8B4000CF639 /* info-icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 90F0F8C817CBC5B1000CF639 /* info-icon.png */; };
 		90FC33E4177EDB38008334D4 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90FC33E2177EDB38008334D4 /* MainStoryboard_iPad.storyboard */; };
 		90FC33E7177EE3B1008334D4 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90FC33E5177EE3B1008334D4 /* MainStoryboard_iPhone.storyboard */; };
 /* End PBXBuildFile section */
@@ -99,6 +100,8 @@
 		3FEC1C7416F75E43002DA1F6 /* libxml2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.dylib; path = usr/lib/libxml2.dylib; sourceTree = SDKROOT; };
 		3FEC1C7616F75E8A002DA1F6 /* Day.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Day.h; sourceTree = "<group>"; };
 		3FEC1C7716F75E8A002DA1F6 /* Day.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Day.m; sourceTree = "<group>"; };
+		9018F23117CBE147009D89EB /* info-icon2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "info-icon2.png"; path = "Jidelnicek/Resource/icons/info-icon2.png"; sourceTree = "<group>"; };
+		9018F23217CBE147009D89EB /* info-icon2@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "info-icon2@2x.png"; path = "Jidelnicek/Resource/icons/info-icon2@2x.png"; sourceTree = "<group>"; };
 		902D0C05177ED17300B80003 /* Media.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Media.xcassets; path = Jidelnicek/Media.xcassets; sourceTree = "<group>"; };
 		909351C5173F78350064E7B1 /* hvezdy_empty@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hvezdy_empty@2x~ipad.png"; path = "Resource/hvezdy_empty@2x~ipad.png"; sourceTree = "<group>"; };
 		909351C6173F78350064E7B1 /* hvezdy_empty~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hvezdy_empty~ipad.png"; path = "Resource/hvezdy_empty~ipad.png"; sourceTree = "<group>"; };
@@ -116,7 +119,6 @@
 		90935227174010870064E7B1 /* CCPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCPicker.m; sourceTree = "<group>"; };
 		90935228174010870064E7B1 /* CCScrollViewPicker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCScrollViewPicker.h; sourceTree = "<group>"; };
 		90935229174010870064E7B1 /* CCScrollViewPicker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCScrollViewPicker.m; sourceTree = "<group>"; };
-		90F0F8C817CBC5B1000CF639 /* info-icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "info-icon.png"; path = "Jidelnicek/Resource/icons/info-icon.png"; sourceTree = "<group>"; };
 		90FC33E3177EDB38008334D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		90FC33E6177EE3B1008334D4 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -183,7 +185,8 @@
 		3FEC1BF116F75770002DA1F6 = {
 			isa = PBXGroup;
 			children = (
-				90F0F8C817CBC5B1000CF639 /* info-icon.png */,
+				9018F23117CBE147009D89EB /* info-icon2.png */,
+				9018F23217CBE147009D89EB /* info-icon2@2x.png */,
 				902D0C05177ED17300B80003 /* Media.xcassets */,
 				3FEC1C7416F75E43002DA1F6 /* libxml2.dylib */,
 				3FEC1C0316F75770002DA1F6 /* Jidelnicek */,
@@ -382,9 +385,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3FEC1C0816F75770002DA1F6 /* InfoPlist.strings in Resources */,
+				9018F23317CBE147009D89EB /* info-icon2.png in Resources */,
 				3F17F56916F76B8B00D60A03 /* foodlist.xml in Resources */,
 				258533C21719BB1700CC9C77 /* out.xml in Resources */,
-				90F0F8C917CBC8B4000CF639 /* info-icon.png in Resources */,
+				9018F23417CBE147009D89EB /* info-icon2@2x.png in Resources */,
 				909351CC173F78350064E7B1 /* hvezdy_empty@2x~ipad.png in Resources */,
 				909351CD173F78350064E7B1 /* hvezdy_empty~ipad.png in Resources */,
 				909351CE173F78350064E7B1 /* hvezdy_empty~iphone.png in Resources */,
