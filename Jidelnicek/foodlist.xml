@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<items>
+	<day>
+		<time>
+			1363620990
+		</time>
+		<food>
+			<name>
+				Svíčková na smetaně
+			</name>
+			<class>
+				maincourse
+			</class>
+			<score>
+				4.2
+			</score>
+		</food>
+	</day>
+	<day>
+		<time>
+			1363620990
+		</time>
+		<food>
+			<name>
+				Masové koule s rajskou omáčkou, houskový knedlík
+			</name>
+			<class>
+				maincourse
+			</class>
+			<score>
+				3.9
+			</score>
+		</food>
+	</day>
+	<day>
+		<time>
+			1363620990
+		</time>
+		<food>
+			<name>
+				Rizoto s hráškem a mrkví
+			</name>
+			<class>
+				maincourse
+			</class>
+			<score>
+				3.2
+			</score>
+		</food>
+	</day>
+	<day>
+		<time>
+			1363620990
+		</time>
+		<food>
+			<name>
+				Kukuřičná polívka s hráškem
+			</name>
+			<class>
+				soup
+			</class>
+			<score>
+				2.4
+			</score>
+		</food>
+	</day>
+</items>

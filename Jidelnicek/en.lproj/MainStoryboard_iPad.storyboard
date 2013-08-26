@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4488.2" systemVersion="12E55" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" useAutolayout="YES" initialViewController="wZT-nJ-Np1">
+    <dependencies>
+        <deployment defaultVersion="1792" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3715.3"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="3s7-J5-UCM">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="wZT-nJ-Np1" sceneMemberID="viewController">
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="N57-21-A5N">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="GJz-jn-dDa" kind="relationship" relationship="rootViewController" id="TkW-wC-5s7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="294-OG-suz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-678" y="-51"/>
+        </scene>
+        <!--View Controller - Mendelu menu-->
+        <scene sceneID="f5M-mx-Npv">
+            <objects>
+                <viewController id="GJz-jn-dDa" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="T7a-aW-2a7"/>
+                        <viewControllerLayoutGuide type="bottom" id="ANU-bx-Doh"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BA7-br-CN0">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="osP-1H-JxN" customClass="CCPicker">
+                                <rect key="frame" x="0.0" y="883" width="768" height="77"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="c3Q-Tx-rxm">
+                                <rect key="frame" x="0.0" y="142" width="768" height="882"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" ambiguous="YES" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="cell" rowHeight="100" id="f7a-gJ-Jxd" customClass="Cell">
+                                        <rect key="frame" x="0.0" y="22" width="768" height="100"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" tableViewCell="f7a-gJ-Jxd" id="2jS-oW-z2r">
+                                            <rect key="frame" x="0.0" y="0.0" width="735" height="99"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="479" translatesAutoresizingMaskIntoConstraints="NO" id="ZhA-R5-86N">
+                                                    <rect key="frame" x="20" y="13" width="479" height="72"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="23"/>
+                                                    <color key="textColor" red="0.049784757653061229" green="0.0036399875176791794" blue="0.041690116296888222" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="u0e-ZL-zmp">
+                                                    <rect key="frame" x="593" y="26" width="122" height="46"/>
+                                                    <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="17"/>
+                                                    <color key="textColor" white="0.25" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="name" destination="ZhA-R5-86N" id="Y97-tw-MQd"/>
+                                            <outlet property="score" destination="u0e-ZL-zmp" id="cwj-gV-iJ3"/>
+                                            <segue destination="11X-rw-6hT" kind="push" identifier="rate" id="SaO-XP-X6M"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="GJz-jn-dDa" id="Xwl-Pq-6eH"/>
+                                    <outlet property="delegate" destination="GJz-jn-dDa" id="bKh-CO-AHC"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" title="Mendelu menu" id="R0t-ZU-qIl">
+                        <barButtonItem key="leftBarButtonItem" title="Přihlášení" id="urY-WV-boH">
+                            <color key="tintColor" red="0.0" green="0.67843139171600342" blue="0.69019609689712524" alpha="1" colorSpace="deviceRGB"/>
+                            <connections>
+                                <segue destination="tJS-cK-kTd" kind="push" id="d7n-bq-aNs"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="info-icon.png" style="plain" id="VHe-X0-poi">
+                            <color key="tintColor" red="0.0" green="0.6784313917" blue="0.69019609689999994" alpha="1" colorSpace="deviceRGB"/>
+                            <connections>
+                                <action selector="showInfo:" destination="GJz-jn-dDa" id="HYQ-Uy-zDD"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="pickerView" destination="osP-1H-JxN" id="xnY-Do-Pdo"/>
+                        <outlet property="table" destination="c3Q-Tx-rxm" id="RHS-Vy-UoB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IL2-xp-OFn" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="176" y="-51"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Mag-v1-vAD">
+            <objects>
+                <viewController id="ozw-WF-KVe" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="TOC-Cb-TyB"/>
+                        <viewControllerLayoutGuide type="bottom" id="BWh-yo-kWd"/>
+                    </layoutGuides>
+                    <modalFormSheetSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cFA-1d-4f2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="710" y="-886"/>
+        </scene>
+        <!--Rate View Controller - Hodnocení-->
+        <scene sceneID="9m3-IN-qMM">
+            <objects>
+                <viewController id="11X-rw-6hT" customClass="RateViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="p8m-Op-Vah"/>
+                        <viewControllerLayoutGuide type="bottom" id="x4e-tT-MhX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ifa-y3-At2" customClass="RateView">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Ixm-xB-2pX" customClass="RateView">
+                                <rect key="frame" x="20" y="167" width="728" height="337"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="728" translatesAutoresizingMaskIntoConstraints="NO" id="59U-ZS-28r">
+                                <rect key="frame" x="20" y="21" width="728" height="95"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="22"/>
+                                <color key="textColor" red="0.0" green="0.6784313917" blue="0.69019609689999994" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eTO-7O-RIS">
+                                <rect key="frame" x="314" y="522" width="141" height="61"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="19"/>
+                                <color key="textColor" red="0.0" green="0.6784313917" blue="0.69019609689999994" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" title="Hodnocení" id="fbk-J3-KSm"/>
+                    <connections>
+                        <outlet property="foodLabel" destination="59U-ZS-28r" id="9V7-TZ-bQn"/>
+                        <outlet property="label" destination="eTO-7O-RIS" id="Aiw-TA-4LY"/>
+                        <outlet property="rate" destination="Ixm-xB-2pX" id="wMC-QX-dQw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SRd-Ah-RQ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1156" y="-41"/>
+        </scene>
+        <!--Login View Controller - Přihlášení-->
+        <scene sceneID="kes-7L-XNM">
+            <objects>
+                <viewController id="tJS-cK-kTd" customClass="LoginViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="GqV-hn-YlF"/>
+                        <viewControllerLayoutGuide type="bottom" id="XVW-D9-oqu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="51P-Yc-WAD">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" fixedFrame="YES" text="Přihlas se pro zobrazení stavu na tvém účtu" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="422" translatesAutoresizingMaskIntoConstraints="NO" id="fQT-9M-F5y">
+                                <rect key="frame" x="173" y="43" width="422" height="76"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.6784313917" blue="0.69019609689999994" alpha="1" colorSpace="deviceRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Přihlašovací jméno do IS" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="lp5-2F-Ftj">
+                                <rect key="frame" x="277" y="152" width="215" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no"/>
+                                <connections>
+                                    <outlet property="delegate" destination="tJS-cK-kTd" id="XWF-T0-Hn0"/>
+                                </connections>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Heslo do IS" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GrH-mo-Sfu">
+                                <rect key="frame" x="277" y="204" width="215" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" secureTextEntry="YES"/>
+                                <connections>
+                                    <outlet property="delegate" destination="tJS-cK-kTd" id="i9k-pw-q4T"/>
+                                </connections>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cor-cN-Vm1">
+                                <rect key="frame" x="277" y="324" width="215" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.6784313917" blue="0.69019609689999994" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Přihlásit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveData:" destination="tJS-cK-kTd" eventType="touchUpInside" id="3C6-re-fWg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZBw-ky-Vpc">
+                                <rect key="frame" x="277" y="385" width="215" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.6784313917" blue="0.69019609689999994" alpha="1" colorSpace="deviceRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Odhlásit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="logout:" destination="tJS-cK-kTd" eventType="touchUpInside" id="zdu-4x-Lnk"/>
+                                    <segue destination="GJz-jn-dDa" kind="push" id="yER-5z-0Ne"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <navigationItem key="navigationItem" title="Přihlášení" id="wpR-5C-fTP"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
+                    <connections>
+                        <outlet property="passwordText" destination="GrH-mo-Sfu" id="Duw-0G-ZW6"/>
+                        <outlet property="usernameText" destination="lp5-2F-Ftj" id="W2k-wB-l4M"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6lK-Hk-YT9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="667" y="1154"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="info-icon.png" width="22" height="22"/>
+    </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackOpaque"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination"/>
+    </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="yER-5z-0Ne"/>
+    </inferredMetricsTieBreakers>
+</document>
