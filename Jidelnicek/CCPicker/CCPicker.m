@@ -58,7 +58,7 @@
 -(void)reloadData{
     // If delegate isn't set break loading
     if (_pickerDelegate == nil) {
-        NSLog(@"You haven't to set delegate");
+        NSLog(@"You didn't set delegate");
         return;
     }
     [_scrollPicker.subviews makeObjectsPerformSelector:@selector(removeFromSuperview)];

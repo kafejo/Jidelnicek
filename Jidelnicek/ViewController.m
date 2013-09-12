@@ -9,6 +9,7 @@
 #import "ViewController.h"
 #define IDIOM    UI_USER_INTERFACE_IDIOM()
 #define IPAD     UIUserInterfaceIdiomPad
+#define SYSTEM_7_0() [[UIDevice currentDevice] systemVersion]
 
 @interface ViewController (){
 Reachability *internetReachableFoo;
@@ -26,6 +27,7 @@ Reachability *internetReachableFoo;
 - (void) viewWillAppear:(BOOL)animated {
     [self.table deselectRowAtIndexPath:[self.table indexPathForSelectedRow] animated:animated];
     [super viewWillAppear:animated];
+    
 }
 - (void)viewDidLoad
 {
@@ -37,6 +39,12 @@ Reachability *internetReachableFoo;
         #endif
     }
     
+    UIColor *greenColor = [UIColor colorWithRed:16.0f/255.0f green:168.0f/255.0f blue:174.0f/255.0f alpha:1.0f];
+   
+    if (IDIOM != IPAD) {
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.table.frame.size.width, self.pickerView.frame.size.height)];
+        self.table.tableFooterView = view;
+    }
     self.navigationController.navigationItem.leftBarButtonItem.tintColor= [UIColor colorWithRed:16.0f/255.0f green:168.0f/255.0f blue:174.0f/255.0f alpha:1.0f];
     
     
@@ -46,15 +54,18 @@ Reachability *internetReachableFoo;
     [self.table addSubview:refresh];
     
     self.pickerView.pickerDelegate = self;
-    self.pickerView.backgroundColor = [UIColor colorWithRed:16.0f/255.0f green:168.0f/255.0f blue:174.0f/255.0f alpha:1.0f];
-    
+    self.pickerView.backgroundColor = greenColor;
     // vytvorim si hlasku kdyz nemam data
     [self createNoDataWarn];
     
-    // stahnu data z netu
-    //[self downloadXmlFromInternet];
-    // aktualizuji tabulku
-    [self reload];
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"first_using"] == nil){
+        //NSLog(@"Jsem tu poprve");
+        [self performSelectorInBackground:@selector(refreshXML:) withObject:refresh];
+        [[NSUserDefaults standardUserDefaults] setObject:@"NO" forKey:@"first_using"];
+    }else{
+         [self reload];
+    }
+   
 }
 
 - (void)refreshXML:(UIRefreshControl *)refreshControl {
@@ -88,7 +99,7 @@ Reachability *internetReachableFoo;
 }
 
 -(IBAction)showInfo:(id)sender{
-    NSString *info = [NSString stringWithFormat:@"Application made by KeepUp\n\nAleš Kocur\nMikuláš Muroň\n\n Version: %@\n\nwww.keepup.cz", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
+    NSString *info = [NSString stringWithFormat:@"Application made by KeepUp\n\nAleš Kocur\nMikuláš Muroň\n\n Version: %@\n\nwww.jidelnicek.keepup.cz", [[NSBundle mainBundle] objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
 
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"About" message:info delegate:self cancelButtonTitle:@"Close" otherButtonTitles:nil];
     
@@ -278,6 +289,7 @@ Reachability *internetReachableFoo;
 }
 
 -(NSString*)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
+    
     switch (section) {
         case 0:
             return @"Denní menu";
@@ -293,6 +305,39 @@ Reachability *internetReachableFoo;
     }
     return @"";
 }
+
+-(UIView*)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    float ver = [[[UIDevice currentDevice] systemVersion] floatValue];
+    if (ver <= 6.1) {
+        
+    UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.table.frame.size.width, 22)];
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(20, 0, self.table.frame.size.width-10, 22)];
+    label.backgroundColor = [UIColor clearColor];
+    label.font = [UIFont boldSystemFontOfSize:12.0];
+    [view addSubview:label];
+    view.backgroundColor = [UIColor colorWithRed:248.0f/255.0f green:248.0f/255.0f blue:248.0f/255.0f alpha:1.0f];
+
+    switch (section) {
+        case 0:
+            label.text = @"Denní menu";
+            break;
+        case 1:
+            label.text = @"Minutky";
+            break;
+        case 2:
+            label.text = @"Ostatní jídla";
+            
+        default:
+            break;
+    }
+    
+    return view;
+    }else{
+        [self tableView:tableView titleForHeaderInSection:section];
+        return NULL;
+    }
+}
+
 
 // Return the number of rows in the section.
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section

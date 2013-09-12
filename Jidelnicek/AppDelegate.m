@@ -12,41 +12,26 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:16.0f/255.0f green:168.0f/255.0f blue:174.0f/255.0f alpha:1.0f]];
-    
-    /*
-    UIImage *navBarImage = [UIImage imageNamed:@"header.png"];
-    
-    [[UINavigationBar appearance] setBackgroundImage:navBarImage
-                                       forBarMetrics:UIBarMetricsDefault];
-    */
-     /*
-    [[UINavigationBar appearance] setTitleTextAttributes:@{
-                                UITextAttributeTextColor: [UIColor colorWithRed:255.0/255.0 green:255.0/255.0 blue:255.0/255.0 alpha:1.0],
-                          UITextAttributeTextShadowColor: [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.0],
-                         UITextAttributeTextShadowOffset: [NSValue valueWithUIOffset:UIOffsetMake(0, 0)],
-                                     UITextAttributeFont: [UIFont fontWithName:@"TrebuchetMS" size:18.0],
-     }];
-    UIImage *backButton = [[UIImage imageNamed:@"barButtonBack.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 14, 0, 5)];
-    UIImage *barButton = [[UIImage imageNamed:@"barButton.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
-    
-    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil]
-     setBackButtonBackgroundImage:backButton
-     forState:UIControlStateNormal
-     barMetrics:UIBarMetricsDefault];
-    
-    [[UIBarButtonItem appearanceWhenContainedIn:[UINavigationBar class], nil]
-     setBackgroundImage:barButton
-     forState:UIControlStateNormal
-     barMetrics:UIBarMetricsDefault];
     
     
-    UIImage *barButton = [[UIImage imageNamed:@"nav-button.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(0, 5, 0, 5)];
+    UIColor *greenColor = [UIColor colorWithRed:16.0f/255.0f green:168.0f/255.0f blue:174.0f/255.0f alpha:1.0f];
     
-    [[UIBarButtonItem appearance] setBackgroundImage:barButton forState:UIControlStateNormal
-                                          barMetrics:UIBarMetricsDefault];
-     */
-    // Override point for customization after application launch.
+    float ver = [[[UIDevice currentDevice] systemVersion] floatValue];
+    if (ver <= 6.1) {
+        [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:245.0f/255.0f green:245.0f/255.0f blue:245.0f/255.0f alpha:1.0f]];
+        [[UIBarButtonItem appearance] setTitleTextAttributes:@{UITextAttributeTextColor : greenColor,
+                                                               UITextAttributeTextShadowOffset : [NSValue valueWithUIOffset:UIOffsetMake(0.0, 0.0)],
+                                                               UITextAttributeFont : [UIFont systemFontOfSize:16.0f]} forState:UIControlStateNormal
+         ];
+        [[UIBarButtonItem appearance] setBackgroundImage:[UIImage new] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+        [[UIBarButtonItem appearance] setBackButtonBackgroundImage:[UIImage imageNamed:@"arrow.png"] forState:UIControlStateNormal barMetrics:UIBarMetricsDefault];
+        [[UINavigationBar appearance] setTitleTextAttributes:@{
+                                                               UITextAttributeTextColor : [UIColor colorWithRed:30.0f/255.0f green:30.0f/255.0f blue:30.0f/255.0f alpha:1.0f],
+                                                               UITextAttributeFont : [UIFont systemFontOfSize:18.0f],
+                                                               UITextAttributeTextShadowColor : [UIColor clearColor],
+                                                               UITextAttributeTextShadowOffset : [NSValue valueWithUIOffset:UIOffsetMake(0, 0)],
+                                                               }];
+          }    // Override point for customization after application launch.
     return YES;
 }
 							

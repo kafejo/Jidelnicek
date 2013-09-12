@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4488.2" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="VDh-ec-QO4">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4510" systemVersion="12E55" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="VDh-ec-QO4">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3715.3"/>
+        <deployment defaultVersion="1536" identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3742"/>
     </dependencies>
     <scenes>
         <!--Navigation Controller-->
@@ -12,7 +12,9 @@
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="fs2-Tj-0p0">
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="tintColor" red="0.0" green="0.68829329334491429" blue="0.91717155612244894" alpha="1" colorSpace="calibratedRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="nZl-Eg-Qo6" kind="relationship" relationship="rootViewController" id="kdC-tH-d8A"/>
@@ -22,7 +24,7 @@
             </objects>
             <point key="canvasLocation" x="-109" y="134"/>
         </scene>
-        <!--View Controller - Mendelu menu-->
+        <!--View Controller - Jídelníček-->
         <scene sceneID="djQ-Ay-vp5">
             <objects>
                 <viewController id="nZl-Eg-Qo6" customClass="ViewController" sceneMemberID="viewController">
@@ -30,7 +32,7 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="KO5-pn-gbQ">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="KO5-pn-gbQ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" heightSizable="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -43,7 +45,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Maso dvou barev 110g (kuřecí, vepřové), šunková rýže" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="XnZ-dM-tM1">
-                                                    <rect key="frame" x="20" y="2" width="218" height="54"/>
+                                                    <rect key="frame" x="20" y="0.0" width="210" height="59"/>
                                                     <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="15"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -69,7 +71,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" id="Jya-7L-CU5" customClass="CCPicker">
-                                <rect key="frame" x="0.0" y="350" width="320" height="66"/>
+                                <rect key="frame" x="0.0" y="362" width="320" height="55.000000000000028"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.6784313917" blue="0.69019609689999994" alpha="1" colorSpace="deviceRGB"/>
                             </view>
@@ -77,8 +79,8 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" title="Mendelu menu" id="x5i-oz-jTS">
-                        <barButtonItem key="backBarButtonItem" title="Denní menu" id="Fi9-ip-qoG"/>
+                    <navigationItem key="navigationItem" title="Jídelníček" id="x5i-oz-jTS">
+                        <barButtonItem key="backBarButtonItem" title="Zpět" id="QVJ-Jd-hr0"/>
                         <barButtonItem key="leftBarButtonItem" title="Přihlášení" id="Wrt-jv-Bjm">
                             <color key="tintColor" red="0.0" green="0.6784313917" blue="0.69019609689999994" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
@@ -86,6 +88,7 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="info-icon2.png" id="vaC-zc-1Sj">
+                            <color key="tintColor" red="0.0" green="0.6784313917" blue="0.69019609689999994" alpha="1" colorSpace="deviceRGB"/>
                             <connections>
                                 <action selector="showInfo:" destination="nZl-Eg-Qo6" id="hNE-86-90A"/>
                             </connections>
@@ -149,7 +152,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Přihlas se pro zobrazení stavu na tvém účtu" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="IZ0-VU-Orx">
-                                <rect key="frame" x="10" y="8" width="300" height="52"/>
+                                <rect key="frame" x="10" y="7.9999999999999991" width="300" height="52"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Thin" family="Helvetica Neue" pointSize="14"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -225,6 +228,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="nxG-7t-s8G"/>
+        <segue reference="kdC-tH-d8A"/>
     </inferredMetricsTieBreakers>
 </document>
