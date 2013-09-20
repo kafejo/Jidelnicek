@@ -50,10 +50,23 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 </label>
+                                                <view contentMode="scaleToFill" id="uYn-Os-ikB">
+                                                    <rect key="frame" x="0.0" y="58" width="256" height="2"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                                </view>
+                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="8Wt-x5-bAt">
+                                                    <rect key="frame" x="238" y="19" width="56" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="name" destination="XnZ-dM-tM1" id="9dC-9B-Ecp"/>
+                                            <outlet property="price" destination="8Wt-x5-bAt" id="IAY-qA-pMx"/>
+                                            <outlet property="score" destination="uYn-Os-ikB" id="eWL-OC-7ED"/>
                                             <segue destination="evc-1F-2sc" kind="push" identifier="rate" id="Nu6-E9-1mu"/>
                                         </connections>
                                     </tableViewCell>
