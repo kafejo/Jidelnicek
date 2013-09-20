@@ -16,7 +16,7 @@ green:((float)((HEXValue & 0xFF00) >> 8))/255.0 \
 blue:((float)(HEXValue & 0xFF))/255.0 alpha:1.0]
 
 @interface ViewController (){
-Reachability *internetReachableFoo;
+    Reachability *internetReachableFoo;
 }
 @end
 
@@ -179,12 +179,19 @@ Reachability *internetReachableFoo;
         
         NSRegularExpression* regex = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:&error];
         NSTextCheckingResult *match = [regex firstMatchInString:s_data options:0 range:NSMakeRange(0, [s_data length])];
+        NSString *fs = [s_data substringWithRange:[match rangeAtIndex:1]];
+        
+        NSNumberFormatter * f = [[NSNumberFormatter alloc] init];
+        [f setNumberStyle:NSNumberFormatterDecimalStyle];
+        NSNumber * number = [f numberFromString:fs];
         
         
-        NSString * TextLabel = [NSString stringWithFormat:@" %@ Kč", [s_data substringWithRange:[match rangeAtIndex:1]]];
+      
+        //NSLog(@"f -> %@ %0.2f",fs, [number floatValue]);
+        NSString * TextLabel = [NSString stringWithFormat:@" %0.2f Kč", [number floatValue]];
         self.navigationItem.leftBarButtonItem.title = TextLabel;
         
-        [[NSUserDefaults standardUserDefaults] setObject:TextLabel  forKey:@"money"];
+        [[NSUserDefaults standardUserDefaults] setObject:number  forKey:@"money"];
         //NSLog(@"Ukladam kredit");
         
     }
@@ -195,7 +202,7 @@ Reachability *internetReachableFoo;
 -(void) createMoneyLabelInternetError {
     
     if ([[NSUserDefaults standardUserDefaults] objectForKey:@"money"] != nil){
-        self.navigationItem.leftBarButtonItem.title = [[NSUserDefaults standardUserDefaults] objectForKey:@"money"];
+        self.navigationItem.leftBarButtonItem.title = [NSString stringWithFormat:@" %0.2f Kč",[[[NSUserDefaults standardUserDefaults] objectForKey:@"money"] floatValue]];
     }
 
 }
@@ -396,6 +403,17 @@ Reachability *internetReachableFoo;
     }else{
         cell.price.text = [NSString stringWithFormat:@"%0.2f Kč", price];
     }
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:@"money"] != nil){
+        
+        float money = [[[NSUserDefaults standardUserDefaults] objectForKey:@"money"] floatValue];
+        //NSLog(@"Cena: %0.2f – %0.2f", price, money);
+        if (money < price) {
+            cell.price.textColor = UIColorFromHEX(0xcf0606);
+        }else{
+            cell.price.textColor = [UIColor blackColor];
+        }
+    }
+    
     
     NSInteger score = (NSInteger)lroundf(t_score);
     
