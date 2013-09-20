@@ -10,7 +10,8 @@
 
 @interface Cell : UITableViewCell
 
+@property (strong, nonatomic) IBOutlet UILabel *price;
+@property (strong, nonatomic) IBOutlet UILabel * name;
+@property (strong, nonatomic) IBOutlet UIView *score;
 
-@property(strong,nonatomic) IBOutlet UILabel * name;
-@property(strong,nonatomic) IBOutlet UILabel * score;
 @end

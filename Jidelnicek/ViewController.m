@@ -10,6 +10,10 @@
 #define IDIOM    UI_USER_INTERFACE_IDIOM()
 #define IPAD     UIUserInterfaceIdiomPad
 #define SYSTEM_7_0() [[UIDevice currentDevice] systemVersion]
+#define UIColorFromHEX(HEXValue) [UIColor \
+colorWithRed:((float)((HEXValue & 0xFF0000) >> 16))/255.0 \
+green:((float)((HEXValue & 0xFF00) >> 8))/255.0 \
+blue:((float)(HEXValue & 0xFF))/255.0 alpha:1.0]
 
 @interface ViewController (){
 Reachability *internetReachableFoo;
@@ -366,25 +370,44 @@ Reachability *internetReachableFoo;
     Cell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     //Cell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     float t_score = 0.0;
+    float price = 0.0;
     switch (indexPath.section) {
         case 0:
             cell.name.text = [[[[_manager actual] foods]objectAtIndex:indexPath.item ] name];
             t_score = [[[[[_manager actual] foods]objectAtIndex:indexPath.row ] score] floatValue];
+            price = [[[[[_manager actual] foods] objectAtIndex:indexPath.row] price] floatValue];
             break;
         case 1:
             cell.name.text = [[[[_manager actual] shortOrder]objectAtIndex:(indexPath.item) ] name];
             t_score = [[[[[_manager actual] shortOrder]objectAtIndex:indexPath.row ] score] floatValue];
+            price = [[[[[_manager actual] shortOrder] objectAtIndex:indexPath.row] price] floatValue];
             break;
         case 2:
             cell.name.text = [[[[_manager actual] otherFood]objectAtIndex:indexPath.item ] name];
             t_score = [[[[[_manager actual] otherFood]objectAtIndex:indexPath.row ] score] floatValue];
+            price = [[[[[_manager actual] otherFood] objectAtIndex:indexPath.row] price] floatValue];
             break;
             
         default:
             break;
     }
-    cell.score.text = [NSString stringWithFormat:@"%0.0f / 5",t_score];
-    cell.score.textColor = [UIColor colorWithRed:39.0f/255.0f green:104.0f/255.0f blue:158.0f/255.0f alpha:1.0f];
+    if (price == 0.0) {
+        cell.price.text = @"-";
+    }else{
+        cell.price.text = [NSString stringWithFormat:@"%0.2f Kč", price];
+    }
+    
+    NSInteger score = (NSInteger)lroundf(t_score);
+    
+    //cell.testRate.text = [NSString stringWithFormat:@"%d\n%0.2f", score, t_score];
+    if (score > 5 || score < 0) {
+        score = 0;
+    }
+    NSString *image = [NSString stringWithFormat:@"rate_bar%d", score];
+    cell.score.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:image]];
+    
+    //cell.score.text = [NSString stringWithFormat:@"%0.0f / 5", t_score];
+    //cell.score.textColor = [UIColor colorWithRed:39.0f/255.0f green:104.0f/255.0f blue:158.0f/255.0f alpha:1.0f];
     
     return cell;
 }
