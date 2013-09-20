@@ -40,7 +40,7 @@
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>mendelu.${PRODUCT_NAME:rfc1034identifier}</string>
+	<string>cz.keepup.jidelnicek</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>

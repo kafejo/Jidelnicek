@@ -56,6 +56,7 @@
 		90384CAD17E1A69900B52DB8 /* icon-144.png in Resources */ = {isa = PBXBuildFile; fileRef = 90384C9E17E1A69900B52DB8 /* icon-144.png */; };
 		90384CAE17E1A69900B52DB8 /* icon-152.png in Resources */ = {isa = PBXBuildFile; fileRef = 90384C9F17E1A69900B52DB8 /* icon-152.png */; };
 		90384CAF17E1A69900B52DB8 /* icon-256.png in Resources */ = {isa = PBXBuildFile; fileRef = 90384CA017E1A69900B52DB8 /* icon-256.png */; };
+		90583D2B17ECD4110099F741 /* DDXMLElement+StringExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 90583D2A17ECD4110099F741 /* DDXMLElement+StringExtension.m */; };
 		909351CC173F78350064E7B1 /* hvezdy_empty@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 909351C5173F78350064E7B1 /* hvezdy_empty@2x~ipad.png */; };
 		909351CD173F78350064E7B1 /* hvezdy_empty~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 909351C6173F78350064E7B1 /* hvezdy_empty~ipad.png */; };
 		909351CE173F78350064E7B1 /* hvezdy_empty~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 909351C7173F78350064E7B1 /* hvezdy_empty~iphone.png */; };
@@ -145,6 +146,8 @@
 		90384C9E17E1A69900B52DB8 /* icon-144.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-144.png"; path = "Jidelnicek/Resource/icons/icon-144.png"; sourceTree = "<group>"; };
 		90384C9F17E1A69900B52DB8 /* icon-152.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-152.png"; path = "Jidelnicek/Resource/icons/icon-152.png"; sourceTree = "<group>"; };
 		90384CA017E1A69900B52DB8 /* icon-256.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "icon-256.png"; path = "Jidelnicek/Resource/icons/icon-256.png"; sourceTree = "<group>"; };
+		90583D2917ECD4110099F741 /* DDXMLElement+StringExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "DDXMLElement+StringExtension.h"; path = "Jidelnicek/DDXMLElement+StringExtension.h"; sourceTree = "<group>"; };
+		90583D2A17ECD4110099F741 /* DDXMLElement+StringExtension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "DDXMLElement+StringExtension.m"; path = "Jidelnicek/DDXMLElement+StringExtension.m"; sourceTree = "<group>"; };
 		909351C5173F78350064E7B1 /* hvezdy_empty@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hvezdy_empty@2x~ipad.png"; path = "Resource/hvezdy_empty@2x~ipad.png"; sourceTree = "<group>"; };
 		909351C6173F78350064E7B1 /* hvezdy_empty~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hvezdy_empty~ipad.png"; path = "Resource/hvezdy_empty~ipad.png"; sourceTree = "<group>"; };
 		909351C7173F78350064E7B1 /* hvezdy_empty~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hvezdy_empty~iphone.png"; path = "Resource/hvezdy_empty~iphone.png"; sourceTree = "<group>"; };
@@ -262,6 +265,7 @@
 		3FEC1C0316F75770002DA1F6 /* Jidelnicek */ = {
 			isa = PBXGroup;
 			children = (
+				90583D2C17ECD41F0099F741 /* Categories */,
 				905F0CD9171F4238007F4904 /* img */,
 				90935225174010870064E7B1 /* CCPicker */,
 				3FEC1C0C16F75770002DA1F6 /* AppDelegate.h */,
@@ -327,6 +331,16 @@
 				90384C8C17E1A67000B52DB8 /* Default.png */,
 			);
 			name = "Lauch screens";
+			sourceTree = "<group>";
+		};
+		90583D2C17ECD41F0099F741 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				90583D2917ECD4110099F741 /* DDXMLElement+StringExtension.h */,
+				90583D2A17ECD4110099F741 /* DDXMLElement+StringExtension.m */,
+			);
+			name = Categories;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		905F0CD9171F4238007F4904 /* img */ = {
@@ -439,6 +453,11 @@
 			attributes = {
 				LastUpgradeCheck = 0500;
 				ORGANIZATIONNAME = student;
+				TargetAttributes = {
+					3FEC1BF916F75770002DA1F6 = {
+						DevelopmentTeam = CNVP9L397P;
+					};
+				};
 			};
 			buildConfigurationList = 3FEC1BF516F75770002DA1F6 /* Build configuration list for PBXProject "Jidelnicek" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -521,6 +540,7 @@
 				3FEC1C7816F75E8A002DA1F6 /* Day.m in Sources */,
 				3F17F55216F7657100D60A03 /* DayManager.m in Sources */,
 				3F17F56316F76B3D00D60A03 /* DDXMLElementAdditions.m in Sources */,
+				90583D2B17ECD4110099F741 /* DDXMLElement+StringExtension.m in Sources */,
 				3F17F56416F76B3D00D60A03 /* NSString+DDXML.m in Sources */,
 				3F17F56516F76B3D00D60A03 /* DDXMLDocument.m in Sources */,
 				3F17F56616F76B3D00D60A03 /* DDXMLElement.m in Sources */,
@@ -635,7 +655,7 @@
 		3FEC1C2116F75771002DA1F6 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ales Kocur (TBTYT2T38R)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Jidelnicek/Jidelnicek-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
@@ -650,7 +670,7 @@
 		3FEC1C2216F75771002DA1F6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer: Ales Kocur (TBTYT2T38R)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Jidelnicek/Jidelnicek-Prefix.pch";
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;

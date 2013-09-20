@@ -83,63 +83,47 @@
     DDXMLDocument *xml = [[DDXMLDocument alloc] initWithXMLString:xmlContent options:0 error:nil];
     DDXMLElement *root = [xml rootElement]; // ITEMS
     
-    NSString *date = [[NSString alloc]init];
+    NSString *date = @"";
     NSDate *converted_date = [[NSDate alloc]init];
-    NSString *name = [[NSString alloc]init];
-    NSString *score = [[NSString alloc]init];
-    NSString *id_a = [[NSString alloc]init];
-    NSInteger type = 0;
-
+    
     
     for (DDXMLElement *element in [root children]) {
         if ([[element name] isEqualToString:@"day"]) { // tag day
             // nactu si time
-            date = [[[element elementsForName:@"time"] objectAtIndex:0] stringValue];
-            // osekam time
-            date = [date stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-            date = [date stringByReplacingOccurrencesOfString:@"\t" withString:@""];
-            // prevedu sting na NSDate
+            date = [element stringElementForName:@"time"];
+
+            // prevedu string na NSDate
             NSDateFormatter *dateFormat = [[NSDateFormatter alloc] init];
             [dateFormat setDateFormat:@"dd.MM.yyyy"];
             converted_date = [dateFormat dateFromString:date];
             // inicializuju s timem
-            Day * PomDay = [[Day alloc]initWithDate:converted_date];
-        //    NSString * temp_string =  [formatter stringFromDate:converted_date];
+            Day * tempDay = [[Day alloc]initWithDate:converted_date];
           //  NSLog(@"Datum je: %@",temp_string);
             
             for (DDXMLElement *subItem in [element children]) {
                 if([[subItem name]isEqualToString:@"food"]){
-                    // ulozeni do promenych
-                    name = [[[subItem elementsForName:@"name"] objectAtIndex:0] stringValue];
-                    score = [[[subItem elementsForName:@"score"] objectAtIndex:0] stringValue];
-                    id_a = [[[subItem elementsForName:@"id"] objectAtIndex:0] stringValue];
-                    NSString *types = [[[subItem elementsForName:@"type"] objectAtIndex:0] stringValue];
-                    type = [[types stringByReplacingOccurrencesOfString:@"\n" withString:@""] integerValue];
-                    type -= 1;
                     
-                    // uprava
-                    name = [name stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-                    score = [score stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-                    id_a = [id_a stringByReplacingOccurrencesOfString:@"\n" withString:@""];
-                    name = [name stringByReplacingOccurrencesOfString:@"\t" withString:@""];
-                    score = [score stringByReplacingOccurrencesOfString:@"\t" withString:@""];
-                    id_a = [id_a stringByReplacingOccurrencesOfString:@"\t" withString:@""];
-                  // vytvoreni objektu
-                    Food * PomFood = [[Food alloc]initWithName:name
-                                WithScore:[[NSNumber alloc] initWithDouble:[score doubleValue]]
-                                WithFoodId:[[NSNumber alloc] initWithInteger:[id_a integerValue]]];
-                    [PomDay addFood:PomFood Type:type];
+                    NSInteger type = [[subItem stringElementForName:@"type"] integerValue];
+                    
+                   // alloc and set new food
+                    Food *tempFood = [[Food alloc] init];
+                    tempFood.name = [subItem stringElementForName:@"name"];
+                    tempFood.score = [NSNumber numberWithDouble:[[subItem stringElementForName:@"score"] doubleValue]];
+                    tempFood.foodId = [NSNumber numberWithInteger:[[subItem stringElementForName:@"id"] integerValue]];
+                    tempFood.price = [NSNumber numberWithFloat:[[subItem stringElementForName:@"price"] floatValue]];
+                    [tempDay addFood:tempFood Type:--type]; // -- because i want number in range 0–2 and there is range 1-3
                 }
-                
 
             }
      //       NSLog(@"Pocet jidel je %i.",[[PomDay foods] count]);
-            [self addDay:PomDay];
+            [self addDay:tempDay];
         }
         
     }
     
 }
+
+
 
 
 @end

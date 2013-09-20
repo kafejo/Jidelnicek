@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "DDXML.h"
+#import "DDXMLElement+StringExtension.h"
 #import "Day.h"
 
 @interface DayManager : NSObject

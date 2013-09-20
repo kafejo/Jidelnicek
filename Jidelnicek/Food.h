@@ -14,6 +14,7 @@
 @property(strong,nonatomic) NSString *name;
 @property(strong,nonatomic) NSNumber *score;
 @property(strong,nonatomic) NSNumber *foodId;
+@property(nonatomic, strong) NSNumber *price;
 
 -(id) initWithName:(NSString *)paramName
               WithScore:(NSNumber*)paramScore
