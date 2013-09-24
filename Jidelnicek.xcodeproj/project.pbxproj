@@ -76,6 +76,8 @@
 		908C5B7417ED103C001EAF3D /* rate_bar3@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 908C5B6E17ED103C001EAF3D /* rate_bar3@2x~iphone.png */; };
 		908C5B7517ED103C001EAF3D /* rate_bar4@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 908C5B6F17ED103C001EAF3D /* rate_bar4@2x~iphone.png */; };
 		908C5B7617ED103C001EAF3D /* rate_bar5@2x~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 908C5B7017ED103C001EAF3D /* rate_bar5@2x~iphone.png */; };
+		908C5BC917F0BA22001EAF3D /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 908C5BC817F0BA21001EAF3D /* Security.framework */; };
+		90924B5C17F1AAF4000D3452 /* libFlurry_4.2.3.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90924B5B17F1AAF4000D3452 /* libFlurry_4.2.3.a */; };
 		909351CC173F78350064E7B1 /* hvezdy_empty@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 909351C5173F78350064E7B1 /* hvezdy_empty@2x~ipad.png */; };
 		909351CD173F78350064E7B1 /* hvezdy_empty~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 909351C6173F78350064E7B1 /* hvezdy_empty~ipad.png */; };
 		909351CE173F78350064E7B1 /* hvezdy_empty~iphone.png in Resources */ = {isa = PBXBuildFile; fileRef = 909351C7173F78350064E7B1 /* hvezdy_empty~iphone.png */; };
@@ -187,6 +189,9 @@
 		908C5B6E17ED103C001EAF3D /* rate_bar3@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "rate_bar3@2x~iphone.png"; path = "Resource/rate_bar/rate_bar3@2x~iphone.png"; sourceTree = "<group>"; };
 		908C5B6F17ED103C001EAF3D /* rate_bar4@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "rate_bar4@2x~iphone.png"; path = "Resource/rate_bar/rate_bar4@2x~iphone.png"; sourceTree = "<group>"; };
 		908C5B7017ED103C001EAF3D /* rate_bar5@2x~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "rate_bar5@2x~iphone.png"; path = "Resource/rate_bar/rate_bar5@2x~iphone.png"; sourceTree = "<group>"; };
+		908C5BC817F0BA21001EAF3D /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		90924B5A17F1AAF4000D3452 /* Flurry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flurry.h; sourceTree = "<group>"; };
+		90924B5B17F1AAF4000D3452 /* libFlurry_4.2.3.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libFlurry_4.2.3.a; sourceTree = "<group>"; };
 		909351C5173F78350064E7B1 /* hvezdy_empty@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hvezdy_empty@2x~ipad.png"; path = "Resource/hvezdy_empty@2x~ipad.png"; sourceTree = "<group>"; };
 		909351C6173F78350064E7B1 /* hvezdy_empty~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hvezdy_empty~ipad.png"; path = "Resource/hvezdy_empty~ipad.png"; sourceTree = "<group>"; };
 		909351C7173F78350064E7B1 /* hvezdy_empty~iphone.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "hvezdy_empty~iphone.png"; path = "Resource/hvezdy_empty~iphone.png"; sourceTree = "<group>"; };
@@ -212,7 +217,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				908C5BC917F0BA22001EAF3D /* Security.framework in Frameworks */,
 				254A996B171B2C91003CACF7 /* SystemConfiguration.framework in Frameworks */,
+				90924B5C17F1AAF4000D3452 /* libFlurry_4.2.3.a in Frameworks */,
 				3FEC1C7516F75E43002DA1F6 /* libxml2.dylib in Frameworks */,
 				3FEC1BFE16F75770002DA1F6 /* UIKit.framework in Frameworks */,
 				3FEC1C0016F75770002DA1F6 /* Foundation.framework in Frameworks */,
@@ -293,6 +300,7 @@
 		3FEC1BFC16F75770002DA1F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				908C5BC817F0BA21001EAF3D /* Security.framework */,
 				254A996A171B2C91003CACF7 /* SystemConfiguration.framework */,
 				3FEC1BFD16F75770002DA1F6 /* UIKit.framework */,
 				3FEC1BFF16F75770002DA1F6 /* Foundation.framework */,
@@ -304,6 +312,7 @@
 		3FEC1C0316F75770002DA1F6 /* Jidelnicek */ = {
 			isa = PBXGroup;
 			children = (
+				90924B5917F1AAF4000D3452 /* Flurry */,
 				90583D2C17ECD41F0099F741 /* Categories */,
 				905F0CD9171F4238007F4904 /* img */,
 				90935225174010870064E7B1 /* CCPicker */,
@@ -446,6 +455,16 @@
 				908C5B5D17ECFD6D001EAF3D /* rate_bar5~ipad.png */,
 			);
 			name = rate_bar;
+			sourceTree = "<group>";
+		};
+		90924B5917F1AAF4000D3452 /* Flurry */ = {
+			isa = PBXGroup;
+			children = (
+				90924B5A17F1AAF4000D3452 /* Flurry.h */,
+				90924B5B17F1AAF4000D3452 /* libFlurry_4.2.3.a */,
+			);
+			name = Flurry;
+			path = "Resource/Flurry iPhone SDK viPhone 4.2.3/Flurry-iOS-4.2.3/Flurry";
 			sourceTree = "<group>";
 		};
 		909351D7173F7C060064E7B1 /* empty stars */ = {
@@ -747,6 +766,10 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "Jidelnicek/Jidelnicek-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/kafejo/Documents/xcodeprojects/Jidelnicek/Jidelnicek/Resource/Flurry\\ iPhone\\ SDK\\ viPhone\\ 4.2.3/Flurry-iOS-4.2.3/Flurry",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
@@ -762,6 +785,10 @@
 				HEADER_SEARCH_PATHS = /usr/include/libxml2;
 				INFOPLIST_FILE = "Jidelnicek/Jidelnicek-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"/Users/kafejo/Documents/xcodeprojects/Jidelnicek/Jidelnicek/Resource/Flurry\\ iPhone\\ SDK\\ viPhone\\ 4.2.3/Flurry-iOS-4.2.3/Flurry",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "376DCE4C-6D42-422D-8F0B-367B0A0634F7";
 				TARGETED_DEVICE_FAMILY = "1,2";

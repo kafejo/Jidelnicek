@@ -17,6 +17,7 @@ blue:((float)(HEXValue & 0xFF))/255.0 alpha:1.0]
 
 @interface ViewController (){
     Reachability *internetReachableFoo;
+    UIRefreshControl *refresh;
 }
 @end
 
@@ -52,7 +53,7 @@ blue:((float)(HEXValue & 0xFF))/255.0 alpha:1.0]
     self.navigationController.navigationItem.leftBarButtonItem.tintColor= [UIColor colorWithRed:16.0f/255.0f green:168.0f/255.0f blue:174.0f/255.0f alpha:1.0f];
     
     
-    UIRefreshControl *refresh = [[UIRefreshControl alloc] init];
+    refresh = [[UIRefreshControl alloc] init];
     [refresh addTarget:self action:@selector(refreshXML:) forControlEvents:UIControlEventValueChanged];
     
     [self.table addSubview:refresh];
@@ -74,8 +75,8 @@ blue:((float)(HEXValue & 0xFF))/255.0 alpha:1.0]
 
 - (void)refreshXML:(UIRefreshControl *)refreshControl {
     [self downloadXmlFromInternet];
-    [self reload];
-    [refreshControl endRefreshing];
+    //[self reload];
+    
 }
 
 // aktualizuje data
@@ -99,6 +100,7 @@ blue:((float)(HEXValue & 0xFF))/255.0 alpha:1.0]
     // zmenil jsem actualni den proto obnovuju tabulku
     [_table reloadData];
     [self.pickerView reloadData];
+    [refresh endRefreshing];
     
 }
 
@@ -135,7 +137,9 @@ blue:((float)(HEXValue & 0xFF))/255.0 alpha:1.0]
             NSString *url = [[NSString stringWithFormat:@"http://akela.mendelu.cz/~xmuron1/jidelnicek/jidelnicek.xml"] stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
             NSString *jidelnicek_xml = [NSString stringWithContentsOfURL:[NSURL URLWithString:url] encoding:NSUTF8StringEncoding error:nil];
             [[NSUserDefaults standardUserDefaults] setObject:jidelnicek_xml forKey:@"jidelnicek"];
-        
+            
+            
+            
             //NSLog(@"Jsem na netu a stahnul jsem novy jidelnicek");
             
             [weakSelf reload];

@@ -7,12 +7,13 @@
 //
 
 #import "AppDelegate.h"
+#import "Flurry.h"
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    
+    [Flurry startSession:@"Z6WMPGM5CDG6BV74MNWS"];
     
     UIColor *greenColor = [UIColor colorWithRed:16.0f/255.0f green:168.0f/255.0f blue:174.0f/255.0f alpha:1.0f];
     
