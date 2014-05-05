@@ -20,47 +20,12 @@
 -(void) viewDidDisappear:(BOOL)animated{
     
      if (_rate.rating != _ratingData) {
-         NSLog(@"Rating: %f %f", _rate.rating, _ratingData);
-         NSString *url = @"http://akela.mendelu.cz/~xmuron1/jidelnicek/send_score.php";
-         url = [NSString stringWithFormat:@"%@?id_food=%i&score=%f",url,[self.foodId integerValue],self.rate.rating];
-         NSLog(@"%@",url);
-         _receivedData = [[NSMutableData alloc] init];
-         NSURLRequest* request = [[NSURLRequest alloc] initWithURL:[[NSURL alloc] initWithString:url]];
-         NSURLConnection* connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
-        internetReachableFoo = [Reachability reachabilityWithHostname:@"www.google.com"];
-        
-        // Internet is reachable
-        internetReachableFoo.reachableBlock = ^(Reachability*reach)
-        {
-            // Update the UI on the main thread
-            dispatch_async(dispatch_get_main_queue(), ^{
-                    [connection start];
-            });
-        };
-        internetReachableFoo.unreachableBlock = ^(Reachability *reach)
-             {
-                 // Update the UI on the main thread
-                 dispatch_async(dispatch_get_main_queue(), ^{
-                     NSLog(@"Internet neni dostupny");
-                     
-                     UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"No internet" message:@"Pro odeslani vaseho hodnoceni je potreba byt pripojen k internetu." delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil, nil, nil];
-                     [alert show];
-                     
-                 });
-             };
-             
-        [internetReachableFoo startNotifier];    
-    
-     }
+         
+         [[MenuManager sharedManager] rateFood:[self.foodId integerValue] rate:self.rate.rating];
+         
+    }
     
     
-}
-
-- (void)connection:(NSURLConnection *)connection
-    didReceiveData:(NSData *)data {
-    [_receivedData appendData:data];
-    NSLog(@"%@",[[NSString alloc] initWithData:_receivedData encoding:NSASCIIStringEncoding]);
-
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil

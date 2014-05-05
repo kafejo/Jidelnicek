@@ -7,6 +7,7 @@
 //
 
 #import "LoginViewController.h"
+#import "ViewController.h"
 
 @implementation LoginViewController
 
@@ -18,14 +19,16 @@
     [self.view addSubview:self.bg];
     [self.bg setHidden:YES];
     [self.bg setUserInteractionEnabled:NO];
-    self.indicator = [[UIActivityIndicatorView alloc] init];
-    self.indicator.backgroundColor = [UIColor blackColor];
-    self.indicator.color = [UIColor whiteColor];
-    int x = self.view.frame.size.width/2;
-    int y = self.view.frame.size.height/2 - 40;
-    [self.indicator setFrame:CGRectMake(x, y, self.indicator.frame.size.width, self.indicator.frame.size.height)];
+    self.indicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    self.indicator.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.5];
+    self.indicator.layer.cornerRadius = 10.0f;
+    
+    [self.indicator setFrame:CGRectMake(0, 0, 100, 100)];
+    self.indicator.center = CGPointMake(self.view.frame.size.width / 2, (self.view.frame.size.height / 2) - 44);
+    
     [self.view addSubview:self.indicator];
-    [self.indicator setHidden:YES];
+    [self.indicator setHidesWhenStopped:YES];
+    
     
 }
 
@@ -42,6 +45,7 @@
     }
     return YES;
 }
+
 - (IBAction)saveData:(id)sender {
     // ulozim jmeno a heslo
     [self.passwordText resignFirstResponder];
@@ -50,18 +54,26 @@
     
     [self.indicator setHidden:NO];
     [self.indicator startAnimating];
+    NSUserDefaults *udf = [NSUserDefaults standardUserDefaults];
     
-    if (_usernameText.text != nil && _passwordText.text != nil) {
-        [[NSUserDefaults standardUserDefaults] setObject:_usernameText.text forKey:@"username"];
-        [[NSUserDefaults standardUserDefaults] setObject:_passwordText.text forKey:@"password"];
+    
+    if (self.usernameText.text != nil && self.passwordText.text != nil) {
+        [udf setObject:self.usernameText.text forKey:@"username"];
+        [udf setObject:self.passwordText.text forKey:@"password"];
+        [udf synchronize];
         
-        [self performSelectorInBackground:@selector(tryLoginToIS) withObject:nil];
-        //[self tryLoginToIS];
-        //NSLog(@"Ukladam: Jmeno je: %@ a heslo je: %@",_usernameText.text,_passwordText.text);
-        
+        [[MenuManager sharedManager] accountBalanceWithLoginSuccess:^(NSString *amount) {
+            ViewController *prevVC = [self.navigationController.viewControllers firstObject];
+            prevVC.navigationItem.leftBarButtonItem.title = amount;
+            [self.navigationController popToViewController:prevVC animated:YES];
+        } failure:^(NSError *error) {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Nelze se přihlásit" message:@"Zkontrolujte přihlašovací údaje a připojení k internetu." delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+            
+            [alert show];
+            [self.indicator stopAnimating];
+        }];
        
-    }
-    else {
+    } else {
         //NSLog(@"Neukladam: Nic si nezadal.");
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Špatné údaje" message:@"Byly zadány nesprávné údaje k přihlášení" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         
@@ -71,55 +83,13 @@
     
 }
 
--(void) tryLoginToIS {
-    
-    NSMutableURLRequest * urlRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://is.mendelu.cz/auth/uskm/jidelnicek.pl"]];
-    NSHTTPURLResponse * response = nil;
-    NSError * error = nil;
-    
-    
-    NSString *authStr = [NSString stringWithFormat:@"%@:%@", [[NSUserDefaults standardUserDefaults] objectForKey:@"username"], [[NSUserDefaults standardUserDefaults] objectForKey:@"password"]];
-    NSData *authData = [authStr dataUsingEncoding:NSUTF8StringEncoding];
-    NSString *authValue = [NSString stringWithFormat:@"Basic %@", [authData base64Encoding]];
-    [urlRequest setValue:authValue forHTTPHeaderField:@"Authorization"];
-    [urlRequest addValue:@"en-US" forHTTPHeaderField:@"Content-Language"];
-    [urlRequest addValue:@"en-US" forHTTPHeaderField:@"Accept-Language"];
-    
-    // poslu data
-    [NSURLConnection sendSynchronousRequest:urlRequest returningResponse:&response error:&error];
-    
-    int status = [response statusCode];
-    NSLog(@"Status code je: %i",status);
-    [self.indicator stopAnimating];
-    [self.bg setHidden:YES];
-    
-    if (status != 200) {
-        UIAlertView *alert=[[UIAlertView alloc]initWithTitle:@"Přihlášení" message:@"Špatné jméno nebo heslo" delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil];
-        [alert show];
-        [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"correctUserNameAndPassword"];
-        
-    }
-    else {
-        
-        [[NSUserDefaults standardUserDefaults] setObject:@"1" forKey:@"correctUserNameAndPassword"];
-        [self performSelectorOnMainThread:@selector(goBack) withObject:nil waitUntilDone:YES];
-    }
-   
-    
-}
-
-- (void)goBack{
-    NSArray *VCs = [self.navigationController viewControllers];
-    [self.navigationController popToViewController:[VCs objectAtIndex:([VCs count] - 2)] animated:YES];
-
-}
 - (IBAction)logout:(id)sender {
     self.usernameText.text = @"";
     self.passwordText.text = @"";
     
-    [[NSUserDefaults standardUserDefaults] setObject:_usernameText.text forKey:@"username"];
-    [[NSUserDefaults standardUserDefaults] setObject:_passwordText.text forKey:@"password"];
-    [[NSUserDefaults standardUserDefaults] setObject:@"0" forKey:@"correctUserNameAndPassword"];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"username"];
+    [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"password"];
+    [[NSUserDefaults standardUserDefaults] synchronize];
     
    
 }

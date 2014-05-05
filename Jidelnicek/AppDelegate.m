@@ -7,13 +7,35 @@
 //
 
 #import "AppDelegate.h"
-#import "Flurry.h"
+#import <AFNetworkActivityLogger/AFNetworkActivityLogger.h>
+#import <AFNetworking/AFNetworking.h>
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
+#import <GoogleAnalytics-iOS-SDK/GAIFields.h>
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    [Flurry startSession:@"Z6WMPGM5CDG6BV74MNWS"];
+    
+    
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 20;
+    
+    // Optional: set Logger to VERBOSE for debug information.
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelNone];
+    
+    // Initialize tracker. Replace with your tracking ID.
+    id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-44028224-3"];
+    
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:
+                            @"appview", kGAIHitType, @"Main screen", kGAIScreenName, nil];
+    [tracker send:params];
+    
+    [[AFNetworkReachabilityManager sharedManager] startMonitoring];
+    [[AFNetworkActivityLogger sharedLogger] startLogging];
+    [[AFNetworkActivityLogger sharedLogger] setLevel:AFLoggerLevelOff];
     
     UIColor *greenColor = [UIColor colorWithRed:16.0f/255.0f green:168.0f/255.0f blue:174.0f/255.0f alpha:1.0f];
     
@@ -33,6 +55,9 @@
                                                                UITextAttributeTextShadowOffset : [NSValue valueWithUIOffset:UIOffsetMake(0, 0)],
                                                                }];
           }    // Override point for customization after application launch.
+    
+    
+    
     return YES;
 }
 							

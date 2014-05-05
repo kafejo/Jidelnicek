@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "NSData+Additions.h"
+#include "MenuManager.h"
 
 @interface LoginViewController : UIViewController <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *usernameText;

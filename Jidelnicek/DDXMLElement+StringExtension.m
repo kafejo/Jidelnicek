@@ -13,7 +13,7 @@
 
 -(NSString*)stringElementForName:(NSString*)elementName{
     if([[self elementsForName:elementName] count] > 0){
-        return [self replaceTabsAndWhiteSpaces:[[[self elementsForName:elementName] objectAtIndex:0] stringValue]];
+        return [self replaceTabsAndWhiteSpaces:[[[self elementsForName:elementName] firstObject] stringValue]];
     }else{
         NSLog(@"Spatne nacteny element!");
         return @"0";

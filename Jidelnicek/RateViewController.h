@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "RateView.h"
 #import "Reachability.h"
+#import "MenuManager.h"
 
 @interface RateViewController : UIViewController
 

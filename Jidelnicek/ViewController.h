@@ -7,24 +7,25 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "DayManager.h"
-#import "Reachability.h"
+#import "MenuManager.h"
+#import <AFNetworking/AFNetworking.h>
 #import "Cell.h"
 #import "RateView.h"
 #import "RateViewController.h"
 #import "NSData+Additions.h"
 #import "CCPicker.h"
+#import <GoogleAnalytics-iOS-SDK/GAI.h>
 
 
+@interface ViewController : GAITrackedViewController<UITableViewDataSource,UITableViewDelegate, CCPickerDelegate>
 
-@interface ViewController : UIViewController<UITableViewDataSource,UITableViewDelegate, CCPickerDelegate>
 
-@property (nonatomic, retain) DayManager* manager;
 @property (nonatomic,strong) IBOutlet UITableView * table;
 @property (nonatomic,strong) IBOutlet UILabel* noDataWarn;
 
 @property (nonatomic, strong) IBOutlet CCPicker *pickerView;
 @property (weak, nonatomic) IBOutlet UITextField *moneyLabel;
-//@property (nonatomic) BOOL loggedIn;
+
+@property (nonatomic, strong) UIActivityIndicatorView *activityIndicator;
 
 @end
